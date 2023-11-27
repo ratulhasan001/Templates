@@ -9,6 +9,10 @@ using ll = long long;
 #include "deBUG.h"
 #endif
 
+void attack() {
+    
+}
+
 int32_t main() {
 
     ios_base::sync_with_stdio(false);
@@ -18,7 +22,7 @@ int32_t main() {
     cin >> T;
     for(int testCase=1; testCase <= T; testCase++) {
     
-        
+        attack();
         // cout << "Case " << testCase << ": " << ;
     }
     return 0;
