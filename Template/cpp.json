@@ -261,7 +261,7 @@
 		  "",
 		  "    int T; ",
 		  "    cin >> T;",
-		  "    for(int testCase=1; testCase <= T; testCase++) {",
+		  "    for(int testCase = 1; testCase <= T; testCase++) {",
 		  "    ",
 		  "\t\t$0",
 		  "        // cout << \"Case \" << testCase << \": \" << ;",
@@ -303,6 +303,149 @@
 			"    }",
 			"    return 0;",
 			"}"
+		],
+		"description": ""
+	  },
+	  "isPrime": {
+		"prefix": "isPrime",
+		"body": [
+		  "bool isPrime(int n) {",
+		  "    if (n == 2 || n == 3) {",
+		  "        return true;",
+		  "    }",
+		  "    if (n <= 1 || n % 2 == 0 || n % 3 == 0) {",
+		  "        return false;",
+		  "    }",
+		  "    for (int i = 5; i * i <= n; i += 6) {",
+		  "        if (n % i == 0 || n % (i + 2) == 0) {",
+		  "            return false;",
+		  "        }",
+		  "    }",
+		  "    return true;",
+		  "}"
+		],
+		"description": ""
+	  },
+	  "bitwiseSieve": {
+		"prefix": "bitwiseSieve",
+		"body": [
+		  "bool Check(int N, int pos) {",
+		  "    return (bool)(N & (1 << pos));",
+		  "}",
+		  "int Set(int N, int pos) {",
+		  "    return N = N | (1 << pos);",
+		  "}",
+		  "",
+		  "const int mx = 100000000;",
+		  "int N = mx;",
+		  "int status[(mx / 32) + 2];",
+		  "vector < int > primes;",
+		  "void sieve() {",
+		  "    int i, j, sqrtN, cnt = 1;",
+		  "    sqrtN = int(sqrt(N));",
+		  "    for (i = 3; i <= sqrtN; i += 2) {",
+		  "        if (Check(status[i >> 5], i & 31) == 0) {",
+		  "            cnt++;",
+		  "            for (j = i * i; j <= N; j += (i << 1)) {",
+		  "                status[j >> 5] = Set(status[j >> 5], j & 31);",
+		  "            }",
+		  "        }",
+		  "    }",
+		  "    primes.push_back(2);",
+		  "",
+		  "    for (i = 3; i <= N; i += 2) {",
+		  "        if (Check(status[i >> 5], i & 31) == 0) {",
+		  "            primes.push_back(i);",
+		  "        }",
+		  "    }",
+		  "}"
+		],
+		"description": ""
+	  },
+	  "bitsetSieve": {
+		"prefix": "bitsetSieve",
+		"body": [
+		  "const int N = 1e6 + 9;",
+		  "bitset < N > isPrime;",
+		  "void sieve() {",
+		  "    isPrime.set();",
+		  "    isPrime[1] = 0;",
+		  "    for (int i = 2; i * i < N; i++) {",
+		  "        if (isPrime[i]) {",
+		  "            for (int j = i * i; j < N; j += i) {",
+		  "                isPrime[j] = 0;",
+		  "            }",
+		  "        }",
+		  "    }",
+		  "}",
+		  "vector < int > prime;",
+		  "prime.push_back(0);",
+		  "prime.push_back(2);",
+		  "for (int i = 3; i < N; i += 2)",
+		  "    if (is_prime[i]) prime.push_back(i);"
+		],
+		"description": ""
+	  },
+	  "divisor": {
+		"prefix": "divisor",
+		"body": [
+		  "vector < int > divs;",
+		  "for (int i = 1; i * i <= n; i++) {",
+		  "    if (n % i == 0) {",
+		  "        divs.push_back(i);",
+		  "        if (i != n / i) divs.push_back(n / i);",
+		  "    }",
+		  "}"
+		],
+		"description": ""
+	  },
+	  "powmod": {
+		"prefix": "powmod",
+		"body": [
+		  "long long powmod(long long a, long long b, long long MOD) {",
+		  "    long long res = 1;",
+		  "    a %= MOD;",
+		  "    assert(b >= 0);",
+		  "    for (; b; b >>= 1) {",
+		  "        if (b & 1) res = res * a % MOD;",
+		  "        a = a * a % MOD;",
+		  "    }",
+		  "    return res;",
+		  "}"
+		],
+		"description": ""
+	  },
+	  "binpow": {
+		"prefix": "binpow",
+		"body": [
+		  "long long binpow(long long a, long long b) {",
+		  "    if (b == 0)",
+		  "        return 1;",
+		  "    long long res = binpow(a, b / 2);",
+		  "    if (b % 2)",
+		  "        return res * res * a;",
+		  "    else",
+		  "        return res * res;",
+		  "}"
+		],
+		"description": ""
+	  },
+	  "customHash": {
+		"prefix": "customHash",
+		"body": [
+		  "struct custom_hash {",
+		  "    static uint64_t splitmix64(uint64_t x) {",
+		  "        x += 0x9e3779b97f4a7c15;",
+		  "        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;",
+		  "        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;",
+		  "        return x ^ (x >> 31);",
+		  "    }",
+		  "    size_t operator()(uint64_t x) const {",
+		  "        static",
+		  "        const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();",
+		  "        return splitmix64(x + FIXED_RANDOM);",
+		  "    }",
+		  "};"
 		],
 		"description": ""
 	  }
