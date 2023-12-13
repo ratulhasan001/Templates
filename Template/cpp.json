@@ -296,7 +296,7 @@
 			"",
 			"    int T; ",
 			"    cin >> T;",
-			"    for(int testCase=1; testCase <= T; testCase++) {",
+			"    for(int testCase = 1; testCase <= T; testCase++) {",
 			"    ",
 			"        attack();",
 			"        // cout << \"Case \" << testCase << \": \" << ;",
