@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
-    
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n;
     cin >> n;
     int w[n];
@@ -19,9 +20,7 @@ int32_t main() {
         for (int j = 0; j <= s; j++) {
             if (w[i - 1] <= j) {
                 dp[i][j] = dp[i][j - w[i - 1]] + dp[i - 1][j]; // all ways to select (maximum s times)
-            }
-            else
-            {
+            } else {
                 dp[i][j] = dp[i - 1][j];
             }
         }
@@ -29,7 +28,6 @@ int32_t main() {
     cout << dp[n][s] << endl;
     return 0;
 }
-
 
 /*
 

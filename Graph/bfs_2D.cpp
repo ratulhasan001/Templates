@@ -1,17 +1,18 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-using pii = pair<int,int>;
+using pii = pair < int, int > ;
 const int N = 1005;
 bool vis[N][N];
 int dis[N][N];
 int n, m;
-vector<pii> direction = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+vector< pii > direction = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 bool isValid(int cI, int cJ) {
     if (cI >= 0 && cI < n && cJ >= 0 && cJ < m) return true;
     else return false;
 }
 void bfs(int si, int sj) {
-    queue<pii> q;
+    queue < pii > q;
     q.push({si, sj});
     dis[si][sj] = 0;
     vis[si][sj] = true;
@@ -20,7 +21,7 @@ void bfs(int si, int sj) {
         int pI = parent.first;
         int pJ = parent.second;
         q.pop();
-        for(pii p : direction) {
+        for (pii p: direction) {
             int cI = pI + p.first;
             int cJ = pJ + p.second;
             if (isValid(cI, cJ) && !vis[cI][cJ]) {
@@ -32,8 +33,8 @@ void bfs(int si, int sj) {
     }
 }
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     cin >> n >> m;
     char a[n][m];

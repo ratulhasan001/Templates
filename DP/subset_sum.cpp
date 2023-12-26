@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n;
     cin >> n;
@@ -21,8 +22,7 @@ int32_t main() {
         for (int j = 0; j <= s; j++) {
             if (a[i - 1] <= j) {
                 dp[i][j] = dp[i - 1][j - a[i - 1]] || dp[i - 1][j]; // for counting +
-            }
-            else {
+            } else {
                 dp[i][j] = dp[i - 1][j];
             }
         }
@@ -31,10 +31,9 @@ int32_t main() {
         cout << "YES" << endl;
     else
         cout << "NO" << endl;
-    cout<<dp[n][s]; // when we use + insted of ||
+    cout << dp[n][s]; // when we use + insted of ||
     return 0;
 }
-
 
 // Count Subset Sum with Given Difference
 /*

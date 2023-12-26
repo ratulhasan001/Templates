@@ -1,27 +1,26 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-using pi = pair<int,int>;
+using pi = pair < int, int > ;
 const int N = 1e5 + 5;
-vector<pi> g[N];
+vector < pi > g[N];
 bool vis[N];
 class Edge {
-public:
-    int a, b, w;
+    public: int a, b, w;
     Edge(int a, int b, int w) {
-        this->a = a;
-        this->b = b;
-        this->w = w;
+        this -> a = a;
+        this -> b = b;
+        this -> w = w;
     }
 };
 class cmp {
-public:
-    bool operator()(Edge a, Edge b) {
+    public: bool operator()(Edge a, Edge b) {
         return a.w > b.w;
     }
 };
 void prims(int s) {
-    priority_queue<Edge, vector<Edge>, cmp> pq;
-    vector<Edge> edgeList;
+    priority_queue < Edge, vector < Edge > , cmp > pq;
+    vector < Edge > edgeList;
     pq.push(Edge(s, s, 0));
     while (!pq.empty()) {
         Edge parent = pq.top();
@@ -29,7 +28,7 @@ void prims(int s) {
         int a = parent.a;
         int b = parent.b;
         int w = parent.w;
-        if(!vis[b]) {
+        if (!vis[b]) {
             vis[b] = true;
             edgeList.push_back(parent);
             for (int i = 0; i < g[b].size(); i++) {
@@ -42,14 +41,14 @@ void prims(int s) {
 
     }
     edgeList.erase(edgeList.begin());
-    for (Edge val : edgeList) {
+    for (Edge val: edgeList) {
         cout << val.a << " " << val.b << " " << val.w << endl;
     }
 }
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
-    
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n, e;
     cin >> n >> e;
     while (e--) {

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int dp[1005][1005];
@@ -9,14 +10,13 @@ int unbounded_knapsack(int n, int s, int val[], int w[]) {
         // int ch1 = val[n - 1] + unbounded_knapsack(n, s - w[n - 1], val, w);
         // int ch2 = unbounded_knapsack(n - 1, s, val, w);
         return dp[n][s] = max(val[n - 1] + unbounded_knapsack(n, s - w[n - 1], val, w), unbounded_knapsack(n - 1, s, val, w));
-    }
-    else {
+    } else {
         return dp[n][s] = unbounded_knapsack(n - 1, s, val, w);
     }
 }
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n;
     cin >> n;

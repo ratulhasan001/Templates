@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-const int N = 1e5+5;
+const int N = 1e5 + 5;
 int parent[N];
 int parentSize[N]; // size based dsu 
 int parentLevel[N]; // rank based dsu
@@ -26,8 +27,7 @@ void dsu_union_using_size(int a, int b) {
             // A leader
             parent[leaderB] = leaderA;
             parentSize[leaderA] += parentSize[leaderB];
-        }
-        else {
+        } else {
             parent[leaderA] = leaderB;
             parentSize[leaderB] += parentSize[leaderA];
         }
@@ -39,11 +39,9 @@ void dsu_union_using_rank(int a, int b) {
     if (leaderA != leaderB) {
         if (parentLevel[leaderA] > parentLevel[leaderB]) {
             parent[leaderB] = leaderA;
-        }
-        else if (parentLevel[leaderB] > parentLevel[leaderA]) {
+        } else if (parentLevel[leaderB] > parentLevel[leaderA]) {
             parent[leaderA] = leaderB;
-        }
-        else {
+        } else {
             parent[leaderB] = leaderA;
             parentLevel[leaderA]++;
         }
@@ -51,10 +49,10 @@ void dsu_union_using_rank(int a, int b) {
 }
 
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    int n, e,cnt=0;
+    int n, e, cnt = 0;
     cin >> n >> e;
     dsu_set(n);
     while (e--) {
@@ -64,11 +62,11 @@ int32_t main() {
         int leaderB = dsu_find(b);
         if (leaderA == leaderB) cnt++; // cycle detection and counting
 
-        else  dsu_union_using_size(a, b);
+        else dsu_union_using_size(a, b);
         // else dsu_union_using_rank(a,b);
 
     }
-    cout<<cnt<<endl;
+    cout << cnt << endl;
 
     return 0;
 }

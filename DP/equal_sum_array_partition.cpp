@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n;
     cin >> n;
@@ -22,8 +23,7 @@ int32_t main() {
             for (int j = 0; j <= sum; j++) {
                 if (a[i - 1] <= j) {
                     dp[i][j] = dp[i - 1][j - a[i - 1]] || dp[i - 1][j];
-                }
-                else {
+                } else {
                     dp[i][j] = dp[i - 1][j];
                 }
             }
@@ -32,8 +32,7 @@ int32_t main() {
             cout << "YES" << endl;
         else
             cout << "NO" << endl;
-    }
-    else {
+    } else {
         cout << "NO" << endl;
     }
     return 0;

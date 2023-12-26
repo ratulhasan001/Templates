@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 const int INF = 1e7;
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n, e;
     cin >> n >> e;

@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 class Edge {
-public:
-    int a, b, w;
+    public: int a, b, w;
     Edge(int a, int b, int w) {
-        this->a = a;
-        this->b = b;
-        this->w = w;
+        this -> a = a;
+        this -> b = b;
+        this -> w = w;
     }
 };
 
@@ -36,21 +36,20 @@ void dsu_union(int a, int b) {
             // A leader
             parent[leaderB] = leaderA;
             parentSize[leaderA] += parentSize[leaderB];
-        }
-        else {
+        } else {
             parent[leaderA] = leaderB;
             parentSize[leaderB] += parentSize[leaderA];
         }
     }
 }
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n, e;
     cin >> n >> e;
-    vector<Edge> v;
-    vector<Edge> ans;
+    vector < Edge > v;
+    vector < Edge > ans;
     dsu_set(n);
     while (e--) {
         int a, b, w;
@@ -58,7 +57,7 @@ int32_t main() {
         v.push_back(Edge(a, b, w));
     }
     sort(v.begin(), v.end(), cmp);
-    for (Edge val : v) {
+    for (Edge val: v) {
         int a = val.a;
         int b = val.b;
         int w = val.w;
@@ -69,7 +68,7 @@ int32_t main() {
         ans.push_back(val);
         dsu_union(a, b);
     }
-    for (Edge val : ans) {
+    for (Edge val: ans) {
         cout << val.a << " " << val.b << " " << val.w << endl;
     }
     return 0;

@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n, s;
     cin >> n >> s;
@@ -24,12 +25,11 @@ int32_t main() {
         for (int j = 1; j <= s; j++) {
             if (w[i - 1] <= j) {
                 dp[i][j] = max(val[i - 1] + dp[i][j - w[i - 1]], dp[i - 1][j]);
-            }
-            else {
+            } else {
                 dp[i][j] = dp[i - 1][j];
             }
         }
     }
     cout << dp[n][s] << endl;
     return 0;
-} 
+}

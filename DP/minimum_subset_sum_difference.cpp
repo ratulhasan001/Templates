@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n;
     cin >> n;
@@ -19,20 +20,19 @@ int32_t main() {
         for (int j = 0; j <= s; j++) {
             if (a[i - 1] <= j) {
                 dp[i][j] = dp[i - 1][j - a[i - 1]] || dp[i - 1][j];
-            }
-            else {
+            } else {
                 dp[i][j] = dp[i - 1][j];
             }
         }
     }
-    vector<int> v;
+    vector < int > v;
     for (int i = 0; i <= n; i++) {
         for (int j = 0; j <= s; j++) {
             if (dp[i][j] == 1) v.push_back(j);
         }
     }
     int ans = INT_MAX;
-    for (int val : v) {
+    for (int val: v) {
         int s1 = val;
         int s2 = s - s1;
         ans = min(ans, abs(s1 - s2));

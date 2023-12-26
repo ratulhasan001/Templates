@@ -1,19 +1,19 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 int n, e;
 class Edge {
-public:
-    int u;
+    public: int u;
     int v;
     int w;
     Edge(int u, int v, int w) {
-        this->u = u;
-        this->v = v;
-        this->w = w;
+        this -> u = u;
+        this -> v = v;
+        this -> w = w;
     }
 };
 
-void bellman_ford(int source,vector<Edge> &g) {
+void bellman_ford(int source, vector < Edge > & g) {
     int dis[n + 1];
     for (int i = 1; i <= n; i++) {
         dis[i] = INT_MAX;
@@ -36,12 +36,11 @@ void bellman_ford(int source,vector<Edge> &g) {
 }
 
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     cin >> n >> e;
-    vector<Edge> g;
+    vector < Edge > g;
     while (e--) {
         int a, b, w;
         cin >> a >> b >> w;
@@ -49,7 +48,7 @@ int32_t main() {
         g.push_back(ed);
     }
     int source = 1;
-    bellman_ford(source,g);
-    
+    bellman_ford(source, g);
+
     return 0;
 }

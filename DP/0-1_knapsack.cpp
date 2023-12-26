@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n;
     cin >> n;
@@ -27,8 +28,7 @@ int32_t main() {
             if (w[i - 1] <= j) {
                 // dp state
                 dp[i][j] = max(v[i - 1] + dp[i - 1][j - w[i - 1]], dp[i - 1][j]);
-            }
-            else {
+            } else {
                 dp[i][j] = dp[i - 1][j];
             }
         }
@@ -39,7 +39,6 @@ int32_t main() {
         }
         cout << endl;
     }
-    cout<<dp[n][s]<<'\n';
+    cout << dp[n][s] << '\n';
     return 0;
 }
-

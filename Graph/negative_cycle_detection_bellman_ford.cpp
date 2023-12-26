@@ -66,91 +66,88 @@
 //     return 0;
 // }
 
-
-
 // using pair
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 using ll = long long;
 using ull = unsigned long long;
-using pii= pair<ll,ll>;
-const char nl= '\n';
+using pii = pair < ll, ll > ;
+const char nl = '\n';
 
-#define all(x) x.begin(),x.end()
-#define rall(x) x.rbegin(),x.rend()
-#define minimum(x) *min_element(x.begin(),x.end())
-#define maximum(x) *max_element(x.begin(),x.end())
+#define all(x) x.begin(), x.end()
+#define rall(x) x.rbegin(), x.rend()
+#define minimum(x) * min_element(x.begin(), x.end())
+#define maximum(x) * max_element(x.begin(), x.end())
 
-
-const int N = 1e5+7;
-const ll INF = 1e18+7;
-vector<pii> g[N];
-vector<pair<pii, ll>> list_of_edges;
+const int N = 1e5 + 7;
+const ll INF = 1e18 + 7;
+vector < pii > g[N];
+vector < pair < pii, ll >> list_of_edges;
 ll d[N];
-int n,m;
+int n, m;
 bool cycle = false;
 void bellman_ford(int source) {
-    for(int i=1;i<=n;i++) d[i] = INF;
+    for (int i = 1; i <= n; i++) d[i] = INF;
 
     d[source] = 0;
 
-    for(int i=1;i<n;i++) {
-        for(auto edge: list_of_edges) {
+    for (int i = 1; i < n; i++) {
+        for (auto edge: list_of_edges) {
             ll u = edge.first.first;
             ll v = edge.first.second;
             ll w = edge.second;
 
-            if(d[u]!=INF && d[v] > d[u]+w)
+            if (d[u] != INF && d[v] > d[u] + w)
                 d[v] = d[u] + w;
         }
     }
-    for(auto edge: list_of_edges) {
+    for (auto edge: list_of_edges) {
         ll u = edge.first.first;
         ll v = edge.first.second;
         ll w = edge.second;
 
-        if(d[u]!=INF && d[v] > d[u]+w) {
+        if (d[u] != INF && d[v] > d[u] + w) {
             cycle = true;
             break;
         }
     }
 }
 
-
-
 int32_t main() {
-    ios_base::sync_with_stdio(false); 
-    cin.tie(nullptr); 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     cin >> n >> m;
 
-    while(m--) {
-        ll u,v,w;
+    while (m--) {
+        ll u, v, w;
         cin >> u >> v >> w;
-        g[u].push_back({v,w});
-        list_of_edges.push_back({{u,v},w});
+        g[u].push_back({v, w});
+        list_of_edges.push_back({{u, v}, w});
     }
-    int source; 
+    int source;
     cin >> source;
-    
+
     bellman_ford(source);
-    
-    int q,flag=0; cin >> q;
-    
-    while(q--) {
-        int x; cin >> x;
-        if(cycle) {
-            flag=1;
+
+    int q, flag = 0;
+    cin >> q;
+
+    while (q--) {
+        int x;
+        cin >> x;
+        if (cycle) {
+            flag = 1;
             continue;
         }
-        if(d[x]==INF) cout<<"Not Possible"<<'\n';
-        else cout<<d[x]<<endl;
+        if (d[x] == INF) cout << "Not Possible" << '\n';
+        else cout << d[x] << endl;
     }
-    if(flag and cycle) cout<<"Negative Cycle Detected"<<'\n';
+    if (flag and cycle) cout << "Negative Cycle Detected" << '\n';
 
-    
-     return 0;
-    
+    return 0;
+
 }
