@@ -12,7 +12,7 @@ void back(int n, vector < int > v) {
             vis[i] = true;
             v.push_back(i);
             back(n, v); // waiting
-            vis[i] = false;
+            vis[i] = false; // making false
             v.pop_back();
         }
     }
