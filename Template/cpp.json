@@ -271,16 +271,41 @@
 		],
 		"description": ""
 	  },
+	  "basic": {
+		"prefix": "basic",
+		"body": [
+		  "#include <bits/stdc++.h>",
+		  "using namespace std;",
+		  "",
+		  "int32_t main() {",
+		  "",
+		  "    ios_base::sync_with_stdio(false);",
+		  "    cin.tie(nullptr);",
+		  "",
+		  "\t$0",
+		  "    ",
+		  "    return 0;",
+		  "}"
+		],
+		"description": ""
+	  },
 	  "debug": {
 		"prefix": "debug",
 		"body": [
 			"#include <bits/stdc++.h>",
+			"#include<ext/pb_ds/tree_policy.hpp>",
+			"#include<ext/pb_ds/assoc_container.hpp>",
+			"",
+			"using namespace __gnu_pbds;",
 			"using namespace std;",
 			"using ll = long long;",
+			"using pii = pair < int, int >;",
+			"template <typename T> using ordered_set = tree<T, null_type, less<T>,",
+			"rb_tree_tag,  tree_order_statistics_node_update>;",			
 			"",
 			"#ifdef ONLINE_JUDGE",
-			"#define debug(...) 42",
-			"#define debug_array(x,y) 42",
+			"#define debug(...) 31",
+			"#define debug_array(x,y) 31",
 			"#else",
 			"#include \"deBUG.h\"",
 			"#endif",
@@ -446,6 +471,51 @@
 		  "        return splitmix64(x + FIXED_RANDOM);",
 		  "    }",
 		  "};"
+		],
+		"description": ""
+	  },
+	  "isSubstring": {
+		"prefix": "isSubstring",
+		"body": [
+		  "bool isSubstring(string s1, string s2) {",
+		  "  // using find method to check if s1 is",
+		  "  // a substring of s2",
+		  "  if (s2.find(s1) != string::npos)",
+		  "    return s2.find(s1);",
+		  "  return false;",
+		  "}"
+		],
+		"description": ""
+	  },
+	  "execution": {
+		"prefix": "execution",
+		"body": [
+		  "clock_t START = clock();",
+		  "clock_t END = clock();",
+		  "cout << 1.0 * (END - START) / CLOCKS_PER_SEC << '\\n';"
+		],
+		"description": ""
+	  },
+	  "onlyDebug": {
+		"prefix": "onlyDebug",
+		"body": [
+			"#ifdef ONLINE_JUDGE",
+			"#define debug(...) 31",
+			"#define debug_array(x,y) 31",
+			"#else",
+			"#include \"deBUG.h\"",
+			"#endif",
+		],
+		"description": ""
+	  },
+	  "orderedSet": {
+		"prefix": "orderedSet",
+		"body": [
+		  "#include<ext/pb_ds/assoc_container.hpp>",
+		  "#include<ext/pb_ds/tree_policy.hpp>",
+		  "using namespace __gnu_pbds;",
+		  "template <typename T> using ordered_set = tree<T, null_type, less<T>, ",
+		  "rb_tree_tag,  tree_order_statistics_node_update>;"
 		],
 		"description": ""
 	  }
