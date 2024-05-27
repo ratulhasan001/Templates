@@ -1,3 +1,6 @@
+#pragma GCC optimization ("O3")
+#pragma GCC optimization ("unroll-loops")
+
 #include <bits/stdc++.h>
 #include<ext/pb_ds/tree_policy.hpp>
 #include<ext/pb_ds/assoc_container.hpp>
@@ -5,9 +8,18 @@
 using namespace __gnu_pbds;
 using namespace std;
 using ll = long long;
+using ld = long double;
+using u128 = __uint128_t;
+using ull = unsigned long long;
 using pii = pair < int, int >;
+using pll = pair < ll, ll >;
 template <typename T> using ordered_set = tree<T, null_type, less<T>,
 rb_tree_tag,  tree_order_statistics_node_update>;
+
+#define all(x) x.begin(),x.end()
+#define rall(x) x.rbegin(),x.rend()
+#define minimum(x) *min_element(x.begin(),x.end())
+#define maximum(x) *max_element(x.begin(),x.end())
 
 #ifdef ONLINE_JUDGE
 #define debug(...) 31
@@ -16,7 +28,7 @@ rb_tree_tag,  tree_order_statistics_node_update>;
 #include "deBUG.h"
 #endif
 
-void attack() {
+void hello_world() {
     
 }
 
@@ -29,7 +41,7 @@ int32_t main() {
     cin >> T;
     for(int testCase = 1; testCase <= T; testCase++) {
     
-        attack();
+        hello_world();
         // cout << "Case " << testCase << ": " << ;
     }
     return 0;
